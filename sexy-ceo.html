@@ -1,0 +1,79 @@
+<head>
+    <title>Who is the Worlds sexiest CEO?</title>
+</head>
+
+<template name="home">
+    <body> <div id="outer"> <!-- we live in a world of divs. -->
+        <h1><a href="/">What is sexy?</a></h1>
+        <p>Some would say aethetics, but sexy should be interpreted on other levels also.</p>
+        <p>For example, business success, innovation and agility</p>
+        <hr />
+        {{> submit_ceo }}
+        <hr />
+        <h2>Sexiest CEO</h2>
+        {{> leaderboard }}
+        <hr />
+        <hr />
+        <small>source: <a href="https://github.com/todo">TODO</a>.</small>
+    </div> </body>
+</template>
+
+<template name="ceo_view">
+    <body> <div id="outer">  <!-- we live in a world of divs. -->
+        <h1><a href="/">Sexiest CEO</a></h1>
+        <hr />
+        <h2 class="ceo">{{ceo_link}}</h2>
+        <hr />
+        <h3><span class="votes">{{votes}}</span> people find these CEOs sexiest!</h3>
+        <hr />
+    </div> </body>
+</template>
+
+<template name="submit_ceo">
+    <h2>Submit your sexy CEO</h2>
+    <table>
+    <tr>
+        <td>
+        <p>First Name</p>
+        <input type="first" class="string" name="first" />
+    </td>
+        <p>Last Name</p>
+        <input type="last" class="string" name="last" />
+    <td>
+        <p>A web url to any .jpg image</p>
+        <input type="url" class="url" name="url" />
+    </td>
+    </tr>
+    </table>
+    <p>
+        <input type="button" id="sexy" name="ceo" value="Sexy" />
+    </p>
+</template>
+
+<template name="leaderboard">
+    <table class="leaderboard">
+    <tr>
+        <th>CEO</th>
+        <th>Sexiness</th>
+    </tr>
+    {{#each ceos}}
+    <tr>
+        <td>
+        <p> {{first}} {{last}}
+            <input type="button" onclick="Template.leaderboard.voteForCeo('{{url}}');" value="Sexy" />
+        </p>
+        <img src={{url}}>
+        </td>
+        <td>{{votes}}</td>
+    </tr>
+    {{/each}}
+    </table>
+    </template>
+
+<template name="ceo">
+    <tr>
+        <td class="ceo"><a href="file/{{ceo}}">{{ceo}}</a></td>
+        <td class="votes">{{votes}}</td>
+    </tr>
+</template>
+
